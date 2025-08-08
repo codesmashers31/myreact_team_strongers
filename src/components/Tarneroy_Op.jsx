@@ -14,6 +14,7 @@ const [light,setLight] = useState(true);
 
 return (
     <>
+     <section style={{position:"relative",top:100}}>
     <div className="p-4 bg-amber-400 text-center flex justify-center align-text-bottom gap-2">
     <button className="bg-black px-1 w-auto h-auto rounded text-white" onClick={(er)=>{setLight(!light); console.log("Button on",er)
     }}>{light?"Off":"On"}</button>
@@ -21,6 +22,7 @@ return (
     
    
 </div>
+</section>
     </>
   )
 
