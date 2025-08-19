@@ -1,33 +1,55 @@
 import { useState } from "react";
 
+const Tarneroy_Op = () => {
+  console.log('I am tarnery running....');
+  const [light, setLight] = useState(true);
 
-
-
-
-const Tarneroy_Op = ()=>{
-console.log('I am tarnery running....');
-
-// const [values,updatefunction] = useState();syntex
-const [light,setLight] = useState(true);
-
-
-
-return (
-    <>
-     <section style={{position:"relative",top:100}}>
-    <div className="p-4 bg-amber-400 text-center flex justify-center align-text-bottom gap-2">
-    <button className="bg-black px-1 w-auto h-auto rounded text-white" onClick={(er)=>{setLight(!light); console.log("Button on",er)
-    }}>{light?"Off":"On"}</button>
-    {light? <h3 className="font-bold bg-white w-20 h-18 border-2 border-white text-black" style={{borderRadius:"60%"}}>On</h3>:<h3 className="font-bold bg-black w-20 h-18 border-2 border-white text-white" style={{borderRadius:"60%"}}>Off</h3>}
-    
-   
-</div>
-</section>
-    </>
-  )
-
-    
-
-}
+  return (
+    <section className="pt-24 pb-12 px-4">
+      <div className="max-w-md mx-auto bg-gradient-to-br from-gray-50 to-white p-8 rounded-3xl shadow-xl border border-gray-200">
+        <h2 className="text-2xl font-bold text-center mb-6 text-gray-800">Light Switch Demo</h2>
+        <p className="text-center text-gray-600 mb-8">Click the button to toggle the light state</p>
+        
+        <div className="flex flex-col items-center justify-center space-y-8">
+          <button 
+            className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg ${
+              light 
+                ? "bg-amber-500 hover:bg-amber-600 text-white" 
+                : "bg-gray-800 hover:bg-gray-900 text-white"
+            }`}
+            onClick={() => setLight(!light)}
+          >
+            {light ? "Turn Off" : "Turn On"}
+          </button>
+          
+          <div className="relative w-40 h-40 flex items-center justify-center">
+            {/* Light effect */}
+            {light && (
+              <div className="absolute inset-0 bg-amber-100 rounded-full blur-xl animate-pulse"></div>
+            )}
+            
+            <div className={`w-32 h-32 rounded-full border-4 flex items-center justify-center transition-all duration-500 ${
+              light 
+                ? "bg-amber-400 border-amber-500 shadow-lg shadow-amber-200" 
+                : "bg-gray-800 border-gray-900 shadow-lg shadow-gray-800/30"
+            }`}>
+              <span className={`text-2xl font-bold ${light ? "text-white" : "text-gray-500"}`}>
+                {light ? "ON" : "OFF"}
+              </span>
+            </div>
+          </div>
+          
+          <div className="text-center mt-4">
+            <p className="text-sm text-gray-500">
+              Current state: <span className={`font-semibold ${light ? "text-amber-600" : "text-gray-700"}`}>
+                {light ? "Light is ON" : "Light is OFF"}
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
 
 export default Tarneroy_Op;
