@@ -3,22 +3,77 @@ import { useEffect, useState } from "react";
 
 const UseEffectapiFetch = () => {
 
+const [product,setProduct] = useState([]);
+
+
+
+
+useEffect(()=>{
+
+ fetch("https://dummyjson.com/products?limit=10")
+ .then((res)=>res.json())
+ .then((data)=>setProduct(data.products))
+ .catch((err)=>console.error('Something is error',err));
+
+},[])
+
+
+console.log('This is product',product);
+
+
+
 
   return (
-    <section className="pt-24 pb-12 px-4">
-      <div className="max-w-2xl mx-auto bg-gradient-to-br from-gray-50 to-white p-8 rounded-3xl shadow-xl border border-gray-200">
-        
-        {/* Title */}
-        <h2 className="text-3xl font-bold text-center mb-6 text-indigo-700">
-          React API Call Hook
-        </h2>
+    <>
+<section className="pt-24 pb-12 px-4">
+  <h2 className="text-3xl font-bold text-center mb-10 text-indigo-700">
+    Our Product List
+  </h2>
 
-   
+  {/* Grid layout */}
+  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+    {product.map((product_new) => (
+      <div
+        key={product_new.id}
+        className="bg-white shadow-lg rounded-2xl overflow-hidden hover:shadow-2xl transition duration-300 flex flex-col"
+      >
+        {/* Image */}
+        <img
+          src={product_new.images[0]}
+          alt={product_new.title}
+          className="h-56 w-full object-cover"
+        />
 
+        {/* Card content */}
+        <div className="p-4 flex flex-col flex-grow">
+          <h1 className="font-bold text-lg text-gray-800 mb-2">
+            {product_new.title.slice(0, 20)}
+          </h1>
+          <p className="text-sm text-gray-600 mb-4 flex-grow">
+            {product_new.description.slice(0, 50)}...
+          </p>
 
+          {/* Price + Button */}
+          <div className="flex justify-between items-center mt-auto">
+            <p className="text-lg font-bold text-green-700">
+              Rs {product_new.price}
+            </p>
+            <button className="bg-yellow-400 text-black font-semibold px-4 py-2 rounded-lg hover:bg-yellow-500 transition">
+              Add to Cart
+            </button>
+          </div>
+        </div>
       </div>
-    </section>
+    ))}
+  </div>
+</section>
+
+    </>
   );
 };
 
 export default UseEffectapiFetch;
+
+
+
+

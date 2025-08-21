@@ -1,88 +1,32 @@
-  import { useState } from "react";
-
-  const Form = () => {
-
-    const [formdata, setFormdata] = useState(
-       { 
-        fullname: "", mobile: "", email: "", password: ""
-       }
-      )
-
-      const [error,setError] = useState("");
-
-
-
-    const handlechange = (e) => {
-
-      
-    setFormdata({...formdata,[e.target.name]:e.target.value})
-
-     if(formdata.mobile.length >= 10 ){
-      setError("mobile Number Must Be 10 digit")
-     }else if (formdata.mobile.length <=11 ){
-      setError("")
-      
-     }
-   //console.log(formdata);
-   
-
-    }
-
-
-    const handlesubmit = (event) => {
-
-         event.preventDefault()
-
-         const stringdata = JSON.stringify(formdata);
-
-         localStorage.setItem("users",stringdata)
-
-         alert('Register Succfully done');
-
-       setFormdata({fullname: "", mobile: "", email: "", password: ""}) 
-
-
-    }
-
-
-
-
-    return (
-
-      <div>
-        <form className="flex flex-col p-3 gap-3" onSubmit={handlesubmit}>
-          <div className="flex flex-col">
-            <label htmlFor="" className="text-white mb-3">Enter the Name</label>
-            <input type="text" onChange={handlechange} value={formdata.fullname} name="fullname" className="h-10 bg-amber-100 p-2 rounded" placeholder="Enter your Name" />
-          </div>
-          
-          <div className="flex flex-col">
-            <label htmlFor="" className="text-white mb-3">Enter the Mobile</label>
-            <input type="text" onChange={handlechange} value={formdata.mobile} className="h-10   bg-amber-100 p-2 rounded" name="mobile" placeholder="Enter your Mobile" />
-            <p className="text-red-800">{error}</p>
-          </div>
-          <div className="flex flex-col">
-            <label htmlFor="" className="text-white mb-3">Enter the Email</label>
-            <input type="text" onChange={handlechange} value={formdata.email} className="h-10 bg-amber-100 p-2 rounded" name="email" placeholder="Enter your correct email" />
-          </div>
-          <div className="flex flex-col">
-            <label htmlFor="" className="text-white mb-3">Enter the Password</label>
-            <input type="text" onChange={handlechange} value={formdata.password} className="h-10 bg-amber-100 mb-2 p-2 rounded" name="password" placeholder="Enter your Password" />
-          </div>
-
-          <div className="text-white mb-3 bg-blue-500  text-center p-2 rounded">
-            <button type="submit">Register</button>
-          </div>
-        </form>
-      </div>
-
-
-
-    );
-
-
-
-
-  }
-
-  export default Form;
+const Form = () => (
+  <form className="space-y-4">
+    <div>
+      <label className="block text-white/80 text-sm mb-2">Name</label>
+      <input
+        type="text"
+        placeholder="Your name"
+        className="w-full bg-white/10 border border-white/20 rounded-xl py-3 px-4 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-amber-500/50"
+      />
+    </div>
+    <div>
+      <label className="block text-white/80 text-sm mb-2">Email</label>
+      <input
+        type="email"
+        placeholder="Your email"
+        className="w-full bg-white/10 border border-white/20 rounded-xl py-3 px-4 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-amber-500/50"
+      />
+    </div>
+    <div>
+      <label className="block text-white/80 text-sm mb-2">Password</label>
+      <input
+        type="password"
+        placeholder="Create a password"
+        className="w-full bg-white/10 border border-white/20 rounded-xl py-3 px-4 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-amber-500/50"
+      />
+    </div>
+    <button className="w-full bg-blue-500 hover:bg-blue-600 text-white font-medium py-3 rounded-xl transition-all duration-300 transform hover:scale-[1.02] mt-4">
+      Register
+    </button>
+  </form>
+);
+export default Form;
