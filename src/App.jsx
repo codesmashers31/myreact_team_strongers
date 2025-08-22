@@ -24,10 +24,6 @@ function App() {
       <Route path='/part3' element={<Question/>}></Route>
       <Route path='/useeffect-basic' element={<UseEffect_Page/>}></Route>
       <Route path='/UseEffectapiFetch' element={<UseEffectapiFetch/>}></Route>
-
-
-
-     
     </Routes>
     </>
   )
