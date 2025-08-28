@@ -8,6 +8,7 @@ import Question from './components/Question'
 import Landing from './pages/Landing'
 import UseEffect_Page from './components/UseEffect_Page'
 import UseEffectapiFetch from './components/UseEffectapiFetch'
+import Practice from './components/Practice'
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
     <>
     <header className='mb-0'>
       <Navbar/>
+      
     </header>
         
     <Routes>
@@ -24,6 +26,7 @@ function App() {
       <Route path='/part3' element={<Question/>}></Route>
       <Route path='/useeffect-basic' element={<UseEffect_Page/>}></Route>
       <Route path='/UseEffectapiFetch' element={<UseEffectapiFetch/>}></Route>
+      <Route path="/practice" element={<Practice/>}></Route>
     </Routes>
     </>
   )
