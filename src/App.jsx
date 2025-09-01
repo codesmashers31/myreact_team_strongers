@@ -9,13 +9,15 @@ import Landing from './pages/Landing'
 import UseEffect_Page from './components/UseEffect_Page'
 import UseEffectapiFetch from './components/UseEffectapiFetch'
 import Practice from './components/Practice'
+import UseRef from './components/UseRef'
+import Textref from './components/Textref'
 
 
 function App() {
   return (
     <>
     <header className='mb-0'>
-      <Navbar/>
+      {/* <Navbar/> */}
       
     </header>
         
@@ -27,6 +29,9 @@ function App() {
       <Route path='/useeffect-basic' element={<UseEffect_Page/>}></Route>
       <Route path='/UseEffectapiFetch' element={<UseEffectapiFetch/>}></Route>
       <Route path="/practice" element={<Practice/>}></Route>
+      <Route path="/ref" element={<UseRef/>}></Route>
+      <Route path="/Textref" element={<Textref/>}></Route>
+
     </Routes>
     </>
   )

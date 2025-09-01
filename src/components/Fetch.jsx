@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const Fetch =  () => {
 
@@ -12,10 +12,10 @@ const fecthdata = async()=>{
     const parsedata = await res.json();
 
    
-    console.log(parsedata.users);
+    
 
     setData(parsedata.users)
-    
+    console.log(parsedata.users);
 
 
 
@@ -35,22 +35,8 @@ fecthdata()
 
 
     return (
-      <>
         <div>This i sdata</div>
-
-        <ul>
-   {data.map((da)=>(
-   <>
-   <li key={da.id}>{da.id}</li>
-   <li >{da.firstName}</li>
-   </>
-    
-
-   ))}
-  </ul>
-  </>
     )
-  
 
 }
 
