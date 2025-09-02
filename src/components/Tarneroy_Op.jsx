@@ -1,10 +1,15 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import MyContext from "../context/MyContext_New";
 
 const Tarneroy_Op = () => {
   console.log('I am tarnery running....');
   const [light, setLight] = useState(true);
 
+
+  const {data,setData} = useContext(MyContext);
+
   return (
+    <>
     <section className="pt-24 pb-12 px-4">
       <div className="max-w-md mx-auto bg-gradient-to-br from-gray-50 to-white p-8 rounded-3xl shadow-xl border border-gray-200">
         <h2 className="text-2xl font-bold text-center mb-6 text-gray-800">Light Switch Demo</h2>
@@ -49,6 +54,16 @@ const Tarneroy_Op = () => {
         </div>
       </div>
     </section>
+   
+
+<section>
+  <h1>{data}</h1>
+  <button onClick={()=>{setData("This is udpated")}}>This is the button</button>
+</section>
+
+
+</>
+
   );
 };
 

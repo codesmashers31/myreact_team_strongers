@@ -11,6 +11,8 @@ import UseEffectapiFetch from './components/UseEffectapiFetch'
 import Practice from './components/Practice'
 import UseRef from './components/UseRef'
 import Textref from './components/Textref'
+import NewContext from './components/NewContext'
+import MyProvider from './context/MyProvider'
 
 
 function App() {
@@ -20,7 +22,7 @@ function App() {
       {/* <Navbar/> */}
       
     </header>
-        
+        <MyProvider>
     <Routes>
       <Route path='/' element={<Landing/>}></Route>
       <Route path='/usestate' element={<Usestate_One/>}></Route>
@@ -31,8 +33,10 @@ function App() {
       <Route path="/practice" element={<Practice/>}></Route>
       <Route path="/ref" element={<UseRef/>}></Route>
       <Route path="/Textref" element={<Textref/>}></Route>
+       <Route path="/newcontext" element={<NewContext/>}></Route>
 
     </Routes>
+    </MyProvider>
     </>
   )
 }

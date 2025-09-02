@@ -1,6 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import MyContext from "../context/MyContext_New";
 
 const Usestate_One = () => {
+
+  const {data} = useContext(MyContext)
+
+
   console.log('I am running form state....');
   const [adding, setAdding] = useState(1);
   const [isAnimating, setIsAnimating] = useState(false);
@@ -37,7 +42,7 @@ const Usestate_One = () => {
             onClick={handleclick}
             disabled={adding > 1000000} // Prevent extremely large numbers
           >
-            Multiply by 2
+            Multiply by 2 {data}
           </button>
           
           {adding > 1000000 && (
