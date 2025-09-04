@@ -5,9 +5,11 @@ const Navbar = () => {
   const location = useLocation();
   const [isUseStateOpen, setIsUseStateOpen] = useState(false);
   const [isUseEffectOpen, setIsUseEffectOpen] = useState(false);
+  const [isUseContextOpen, setIsContextOpen] = useState(false);
 
   const useStateRef = useRef(null);
   const useEffectRef = useRef(null);
+  const useContextRef = useRef(null);
 
   // Close dropdowns when outside is clicked
   useEffect(() => {
@@ -17,6 +19,9 @@ const Navbar = () => {
       }
       if (useEffectRef.current && !useEffectRef.current.contains(event.target)) {
         setIsUseEffectOpen(false);
+      }
+        if (useContextRef.current && !useContextRef.current.contains(event.target)) {
+        setIsContextOpen(false);
       }
     }
     document.addEventListener("mousedown", handleClickOutside);
@@ -127,6 +132,41 @@ const Navbar = () => {
                 onClick={() => setIsUseEffectOpen(false)}>
                 useEffect Dependencies
               </Link>
+            </div>
+          )}
+        </div>
+
+
+
+
+        <div className="relative" ref={useEffectRef}>
+          <button
+            onClick={() => setIsContextOpen(!isUseEffectOpen)}
+            className={`px-3 py-2 rounded-lg transition-all duration-300 flex items-center ${
+              ["/muiltform", ].some((path) =>
+                location.pathname.startsWith(path)
+              )
+                ? "bg-amber-500 text-white font-medium"
+                : "hover:bg-gray-100"
+            }`}
+          >
+            UseContext
+            <svg
+              className={`ml-2 w-4 h-4 transition-transform ${isUseEffectOpen ? "rotate-180" : ""}`}
+              fill="none" stroke="currentColor" viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+          {/* Note the change: right-0 instead of left-0 */}
+          {isUseContextOpen && (
+            <div className="absolute top-full right-0 mt-2 w-60 bg-white rounded-lg shadow-lg py-2 z-50 border border-gray-200">
+              <Link to="/muiltform"
+                className={`block px-4 py-2 transition-colors ${location.pathname === "/muiltform" ? "bg-amber-100 text-amber-700 font-medium" : "hover:bg-gray-100"}`}
+                onClick={() => setIsContextOpen(false)}>
+                Muilti Form
+              </Link>
+             
             </div>
           )}
         </div>
