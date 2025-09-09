@@ -84,6 +84,7 @@
 
 
 import { CalendarDaysIcon, HandRaisedIcon } from "@heroicons/react/24/outline";
+// import { useReducer } from "react";
 
 
 export default function Practice() {
@@ -233,3 +234,10 @@ export default function Practice() {
 // Forms with Validation – Login, Register, Contact.
 
 // Input Groups – Search box with icon/button.
+
+
+
+
+
+
+// const [state,dispatch] = useReducer(reducerfunction(state,action)=>{},initstate)

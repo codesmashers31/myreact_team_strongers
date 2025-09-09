@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import MyContext_New from "../context/MyContext_New";
 
 const Question = () => {
   const [loading, setLoading] = useState(false);
@@ -6,6 +7,9 @@ const Question = () => {
   const [question1, setQuestion] = useState(false);
   const [activeQuestion, setActiveQuestion] = useState(null);
   
+
+
+  const {data,setData} = useContext(MyContext_New)
   const [question_One] = useState([{ 
     question: 1, 
     point1: "Represents dynamic data in a component that can change over time.", 
@@ -78,6 +82,9 @@ const Question = () => {
             >
               Click to see the Answer - Use State
             </button>
+
+
+            <button onClick={()=>{setData(data+1)}}>{data}</button>
 
             {activeQuestion === 2 && question_two.map((questions_two, i) => (
               <div key={i} className="bg-white p-4 rounded-xl shadow-inner animate-fade-in">

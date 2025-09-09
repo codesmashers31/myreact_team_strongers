@@ -11,6 +11,7 @@ import UseRef from './components/UseRef';
 import Textref from './components/Textref';
 import NewContext from './components/NewContext';
 import Register from './pages/Register';
+import Reduce_Process from './components/Reduce_Process';
 
 const AppRoutes = () => {
   return (
@@ -26,6 +27,8 @@ const AppRoutes = () => {
       <Route path="/Textref" element={<Textref />} />
       <Route path="/newcontext" element={<NewContext />} />
       <Route path="/muiltform" element={<Register/>} />
+      <Route path="/Reduce_Process" element={<Reduce_Process/>} />
+      
     </Routes>
   );
 };

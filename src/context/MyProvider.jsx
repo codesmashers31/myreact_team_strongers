@@ -4,7 +4,7 @@ import MyContext_New from "./MyContext_New";
 const MyProvider = ({children})=>{
 
 
-    const [data,setData] = useState("This is Provider Datas");
+    const [data,setData] = useState(0);
 
 
     return(
