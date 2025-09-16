@@ -1,5 +1,5 @@
 
-import fs,{ unlink } from 'fs';
+//import fs,{ unlink } from 'fs';
 
 
 //console.log(fs);
@@ -42,6 +42,12 @@ console.log("file Created...");
 fs.readFile("newfile.txt","utf-8",(err,data)=>{
     if(err) throw err;
     console.log(data);
+    
+})
+
+
+fs - object . readFile("filename","Message",()=>{
+    console.log('This file is created');
     
 })
 
