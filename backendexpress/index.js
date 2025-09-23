@@ -3,9 +3,12 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 
 import userRouters from './route/userRoutes.js'
+import connectDb from './config/db.js';
 
 // DOTENV for env access
 dotenv.config();
+
+connectDb();
 
 // Make the Express App
 const app = express();
