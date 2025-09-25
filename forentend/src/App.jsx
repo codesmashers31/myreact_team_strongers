@@ -1,5 +1,6 @@
 import { useState } from "react"
 import axios from 'axios';
+import { useEffect } from "react";
 
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
   const [from,setForm]  = useState({name:"",email:""}) 
 
   const [datas,setDatas]=useState("")
+  const [newdata,setNewdata]=useState("")
   
 
   const handlechange = (e)=>{
@@ -20,6 +22,14 @@ function App() {
 
   const handelsubmit = (e)=>{
     e.preventDefault()
+    
+    if(from.name==="" && from.email===""){
+     setNewdata('Please fill the datas')
+      return;
+    }
+
+
+
     axios.post("http://localhost:5000/api/auth/create",from).then((res)=>{
       setDatas(res.data) 
      //console.log(res.data);
@@ -30,6 +40,15 @@ function App() {
     })
 
   }
+
+
+useEffect(()=>{
+         
+      
+
+},[])
+
+
 
   return (
     <>
@@ -47,8 +66,15 @@ function App() {
 
         
       </form>
-      <p>{datas.data}</p>
+      <p style={{color:"red"}}>{newdata}</p>
+      <p style={{color:"Green"}}>{datas.msg}</p>
     </div>
+
+
+
+
+
+
      
     </>
   )

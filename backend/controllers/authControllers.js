@@ -1,12 +1,11 @@
-export const create = async(req,res)=>{
+import users from '../model/users.js'
+export const create_new = async(req,res)=>{
 
 try{
 
-    //console.log(req.body);
-
-    if(req.body){
-         res.status(200).json({data:"Succfully done"})
-    }
+    const {name,email} = req.body;
+  const usercreate = await users.create({name,email});
+  res.status(201).json({msg:"Succfully done"})  
     
 
 }catch(error){
