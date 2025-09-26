@@ -17,3 +17,17 @@ try{
 
 
 }
+
+
+export const getdatas = async (req, res) => {
+  try {
+   
+    
+    const usersdata = await users.find();
+     //console.log(usersdata);
+    res.status(200).json(usersdata); // ✅ correct
+  } catch (error) {
+    console.log('Something error', error.message);
+    res.status(500).json({ error: "Server error" });
+  }
+};

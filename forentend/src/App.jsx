@@ -10,6 +10,8 @@ function App() {
 
   const [datas,setDatas]=useState("")
   const [newdata,setNewdata]=useState("")
+
+  const [userdatas,setUserdats] = useState([]);
   
 
   const handlechange = (e)=>{
@@ -42,11 +44,17 @@ function App() {
   }
 
 
-useEffect(()=>{
-         
-      
-
-},[])
+useEffect(() => {
+  axios
+    .get("http://localhost:5000/api/auth/getdata")
+    .then((res) => {
+      //console.log('newdatas', res.data);
+      setUserdats(res.data); // ✅ store data in state
+    })
+    .catch((error) => {
+      console.log("Something error", error.message);
+    });
+}, [from]);
 
 
 
@@ -69,7 +77,21 @@ useEffect(()=>{
       <p style={{color:"red"}}>{newdata}</p>
       <p style={{color:"Green"}}>{datas.msg}</p>
     </div>
+    
 
+
+    <div className="bg-blue-500 p-20 flex flex-wrap justify-between">
+         {userdatas.map((e,i)=>(
+          <div key={i} className="bg-white text-black p-10 w-100">
+
+                 <h1>{e.name}</h1> 
+
+                 <p>{e.email}</p>
+                
+
+          </div>
+         ))}
+    </div>
 
 
 

@@ -4,8 +4,9 @@ import mongoose from 'mongoose'
  
 const userschme = new mongoose.Schema({
 
-    name:{type:String},
+    name:{type:String,},
     email:{}
+
 
 })
 
